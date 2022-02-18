@@ -48,10 +48,11 @@ public class GameHelper {
 	
 	public void editGame(GameObj g) {
 		//new data for game is passed already as g
+		GameObj temp = g;
+		delGame(g);
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-	    em.merge(g);
-	    //em.flush();
+	    em.merge(temp);
 	    em.getTransaction().commit();
 	    em.close();
 	}
